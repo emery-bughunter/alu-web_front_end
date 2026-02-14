@@ -458,6 +458,16 @@ ul.row {
   background-color: var(--button-hover-background);
 }
 
+.button-primary {
+  color: var(--color-white);
+  background: var(--color-primary);
+}
+
+.button-primary:hover {
+  color: var(--color-primary);
+  background: var(--color-white);
+}
+
 [data-section-theme="dark"] {
   --button-color: var(--color-white);
 }
@@ -754,7 +764,6 @@ ul.row {
 }
 
 /*** FORM ***/
-
 /* Comment section
     ============================= */
 
@@ -824,17 +833,22 @@ textarea:focus {
   font-size: var(--font-size-small);
 }
 
+/* Form group
+    ============================= */
+
 .form-group {
   padding: 1rem;
   margin: 0;
   background-color: var(--color-white);
-  transition: .3s;
 }
 
 .form-group:focus-within {
   background-color: var(--color-light-grey);
   transition: .3s;
 }
+
+/* Form field
+    ============================= */
 
 .form-field-container {
   position: relative;
@@ -844,13 +858,18 @@ textarea:focus {
   font-style: normal;
 }
 
-.form-help {
-  max-height: 0;
-  overflow: hidden;
-  transition: .3s;
+/* Form help
+    ============================= */
+
+.form-group .form-help {
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: .019rem;
+  color: var(--color-dark-grey);
   font-size: var(--font-size-small);
-  line-height: 1.2;
-  color: var(--color-grey-dark);
+  max-height: 0;
+  transition: .3s;
+  overflow: hidden;
 }
 
 .form-group:focus-within .form-help {
@@ -858,36 +877,46 @@ textarea:focus {
   margin: .4rem 0 0;
 }
 
-input:not(:placeholder-shown):invalid:not(:focus) {
-  border: .1rem solid var(--error-color);
-}
+/* Form error handling
+    ============================= */
 
-input:required:valid {
-  border: .1rem solid var(--valid-color);
-}
+/* The following code is used to place the icon in the after pseudo element. Because after and before are not possible in an input, we need to use a span that will be positioned on the right of our input. */
 
-input:required:focus:valid,
-textarea:required:focus:valid {
-  border: .1rem solid var(--valid-color);
-}
-
-.form-field-icon::after {
-  content: "";
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
+input:not(:placeholder-shown) ~ .form-field-icon::after {
   height: 100%;
-  display: inline-block;
-  font-size: 1.5rem;
+  right: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 1.3em;
 }
 
-input:not(:placeholder-shown):invalid:not(:focus) ~ .form-field-icon::after {
-  content: "✘";
+/* Because inputs are invalid by default, we need to be careful and show the icon when we are not in focus and when when the input is not empty (placeholder-shown). Careful with this one because it is not supported everywhere. */
+
+input:required:invalid:not(:focus):not(:placeholder-shown) ~ .form-field-icon::after {
+  content: '✘';
   color: var(--error-color);
 }
 
 input:required:valid ~ .form-field-icon::after {
-  content: "✔";
+  content: '✔';
   color: var(--valid-color);
+}
+
+/* We want to hide the helper text when we are not in focus. The tilte allows us to select a sibling element in CSS */
+
+input:required:valid ~ .form-help {
+  max-height: 0;
+}
+
+/* Showing a border in a different color is good but not enough. For accessibility purposes, we added an icon when the input is valid or invalid to have a visual distinction that is not only color based.*/
+
+input:required:invalid:not(:focus):not(:placeholder-shown),
+textarea:invalid:not(:focus):not(:placeholder-shown) {
+  border: 0.1rem solid var(--error-color);
+}
+
+input:required:valid:not(:placeholder-shown),
+textarea:valid:not(:placeholder-shown) {
+  border: 0.1rem solid var(--valid-color);
 }
