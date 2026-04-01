@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Article - Techium</title>
+    <link rel="stylesheet" href="01-styles.css">
+  </head>
+  <body class="article-page">
+    <!-- Skip links -->
+    <nav aria-label="Skip links">
+      <ul class="off-screen">
+        <li><a href="#a11y-primary-nav" class="skip-link">Skip to primary navigation</a></li>
+        <li><a href="#a11y-main-content" class="skip-link">Skip to main content</a></li>
+      </ul>
+    </nav>
+    <header class="header" data-section-theme="dark">
+      <div class="header-container">
+        <nav class="navbar-menu" id="a11y-primary-nav" tabindex="-1">
+          <ul class="nav">
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="a11y-main-content" tabindex="-1">
+      <article>
+        <h1>Ut alios omittam, hunc appello, quem ille unum secutus est.</h1>
+      </article>
+    </main>
+  </body>
+</html>
