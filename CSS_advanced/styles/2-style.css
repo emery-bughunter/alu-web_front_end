@@ -1,10 +1,6 @@
-/* Task 1: Effortless transitions when scrolling */
-
 html {
   scroll-behavior: smooth;
 }
-
-/* Task 2: Color values */
 
 body {
   color: #161616;

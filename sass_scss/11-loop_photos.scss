@@ -1,7 +1,13 @@
-@import "11-photos.scss";
+@import '10-images.scss';
+
+$list-names: (
+  'John',
+  'Jane',
+  'Bob'
+);
 
 @each $name in $list-names {
-  .photo-#{$name} {
-    background: image-url("photos/#{$name}.jpg") no-repeat;
+  .#{$name} {
+    background-image: map-get($list-images, $name);
   }
 }

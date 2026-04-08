@@ -1,12 +1,12 @@
-@mixin margin-left-right($value) {
-  margin-left: $value;
-  margin-right: $value;
+@mixin margin($left-right) {
+  margin-left: $left-right;
+  margin-right: $left-right;
 }
 
 body {
-  @include margin-left-right(10px);
+  @include margin(10px);
 }
 
 div {
-  @include margin-left-right(15px);
+  @include margin(15px);
 }

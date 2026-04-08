@@ -1,11 +1,3 @@
-/* Task 1: Effortless transitions when scrolling */
-
-html {
-  scroll-behavior: smooth;
-}
-
-/* Task 3: CSS Custom Properties */
-
 :root {
   --color-primary: #d73953;
   --color-black: #090909;
@@ -15,14 +7,16 @@ html {
   --text-color: var(--color-black);
 }
 
-/* Task 2: Color values with CSS variables */
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   color: var(--text-color);
 }
 
 a {
-  color: var(--text-color);
+  color: #161616;
 }
 
 .visually-hidden {
